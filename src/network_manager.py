@@ -4,6 +4,7 @@ import gc
 import matplotlib.pylab as plt
 import numpy as np
 import os
+import time
 
 from operator import itemgetter
 from os import listdir
@@ -17,6 +18,7 @@ from raster_rw import GTiffHandler
 from entities.AccuracyHistory import AccuracyHistory
 from config import SamplesConfig, NetworkParameters, RasterParams, DatasetConfig, TestParameters
 from models.index_based_generator import IndexBasedGenerator
+from models.sorted_predict_generator import SortedPredictGenerator
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"  # for training on gpu
 
@@ -188,7 +190,7 @@ def main(argv):
     elif operation == OPERATION_TEST_FULLSIZE_NETWORK:
         test_load_fullsize(model_file, weights_file, dataset_folder)
     elif operation == OPERATION_PLAY:
-        play3()
+        play4()
 
     sys.exit()
 
@@ -640,7 +642,12 @@ def play3():
     pad_amount = int(SamplesConfig.PATCH_SIZE / 2)
     bigdata_clip = np.pad(bigdata_clip, [(0, 0), (pad_amount, pad_amount), (pad_amount, pad_amount)], mode='constant')
 
+    start = time.time()
     predict_mask = predict_fullsize_mask(loaded_model, bigdata_clip)
+    end = time.time()
+    print(end - start)
+
+    sys.exit()
 
     fnf_handler = GTiffHandler()
     #fnf_handler.readFile("storage/test_fullsize_train_pred.tif")
@@ -675,6 +682,82 @@ def play3():
 
     fnf_handler.src_Z = error_mask
     fnf_handler.writeNewFile('storage/test_balanced_test15_10p_error.tif')
+
+
+    fnf_handler.closeFile()
+
+def play4():
+    json_file = open("storage/full_upsample.json", 'r')
+    #json_file = open("storage/factor-5p-upsample.json", 'r')
+    loaded_model_json = json_file.read()
+    json_file.close()
+    loaded_model = model_from_json(loaded_model_json)
+    # load weights into new model
+    loaded_model.load_weights("storage/balanced-10p-upsample_0.8539.h5")
+    #loaded_model.load_weights("storage/temp/full-upsample-weights-improvement-04-0.98.hdf5")
+    #loaded_model.load_weights("storage/factor-5p-upsample_0.9692.h5")
+
+    print("Loaded model from disk")
+
+    # evaluate loaded model on test data
+    loaded_model.compile(loss=keras.losses.binary_crossentropy, optimizer=keras.optimizers.Adam(), metrics=['accuracy'])
+
+    dataset_file = "data/processed/test/3/dataset.npz"
+
+    bigdata = None
+    item_getter = itemgetter('bigdata')
+    with np.load(dataset_file) as df:
+        bigdata = item_getter(df)
+
+    #bigdata_clip = bigdata[:, :900, :900]
+    bigdata_clip = bigdata[:, :RasterParams.FNF_MAX_X, :RasterParams.FNF_MAX_Y]
+
+    pad_amount = int(SamplesConfig.PATCH_SIZE / 2)
+    bigdata_clip = np.pad(bigdata_clip, [(0, 0), (pad_amount, pad_amount), (pad_amount, pad_amount)], mode='constant')
+
+
+    predict_generator = SortedPredictGenerator(NetworkParameters.BATCH_SIZE, bigdata_clip)
+
+    start = time.time()
+    predict_mask = loaded_model.predict_generator(generator=predict_generator, steps=int((RasterParams.FNF_MAX_X*RasterParams.FNF_MAX_Y)/NetworkParameters.BATCH_SIZE)+1, use_multiprocessing=True, verbose=1)
+    predict_mask = np.argmax(predict_mask, axis=1)
+    predict_mask = predict_mask.reshape(RasterParams.FNF_MAX_X, RasterParams.FNF_MAX_Y)
+    end = time.time()
+    print(end - start)
+
+    fnf_handler = GTiffHandler()
+    #fnf_handler.readFile("storage/test_fullsize_train_pred.tif")
+    fnf_handler.readFile("storage/FNF_BALANCED_15.tif")
+
+    bigdata_gt = None
+    item_getter = itemgetter('bigdata_gt')
+    with np.load(dataset_file) as df:
+        bigdata_gt = item_getter(df)
+
+    #bigdata_gt_clip = bigdata_gt[:900, :900]
+    bigdata_gt_clip = bigdata_gt
+
+    error_mask = np.logical_xor(predict_mask, bigdata_gt_clip)
+
+    temp_pred = predict_mask.reshape(predict_mask.shape[0] * predict_mask.shape[1])
+    temp_gt = bigdata_gt_clip.reshape(bigdata_gt_clip.shape[0] * bigdata_gt_clip.shape[1])
+
+    ax, cm = plot_confusion_matrix(temp_gt, temp_pred, np.array(['No Forest','Forest']))
+
+    plt.show()
+
+    print(classification_report(temp_gt, temp_pred, target_names=np.array(['no forest', 'forest'])))
+
+    unique, counts = np.unique(error_mask, return_counts=True)
+    print("Test accuracy ", counts[0] / (counts[0]+counts[1]))
+
+    np.savez_compressed('storage/test_balanced_test15_10p_conf_fff.npz', cm=cm)
+
+    fnf_handler.src_Z = predict_mask
+    fnf_handler.writeNewFile('storage/test_balanced_test15_10p_pred_fff.tif')
+
+    fnf_handler.src_Z = error_mask
+    fnf_handler.writeNewFile('storage/test_balanced_test15_10p_error_fff.tif')
 
 
     fnf_handler.closeFile()
