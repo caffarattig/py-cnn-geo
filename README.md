@@ -29,11 +29,11 @@ Bellow there's a table describing the different files involved in the contructio
         LC08_L1TP_222077_20140301_20170425_01_T1<br>
         LC08_L1TP_222078_20140301_20170425_01_T1
       </td>
-      <td>S25W053_17_FNF_F02DAR</td>
+      <td>S25W053_15_FNF_F02DAR</td>
       <td>Training</td>
       <td>
-        NF: 11025610<br>
-        F: 1934390
+        NF: 10363584<br>
+        F: 2596416
       </td>
     </tr>
     <tr>
@@ -46,11 +46,11 @@ Bellow there's a table describing the different files involved in the contructio
         LC08_L1TP_222077_20140301_20170425_01_T1<br>
         LC08_L1TP_222078_20140301_20170425_01_T1
       </td>
-      <td>S25W052_17_FNF_F02DAR</td>
+      <td>S25W052_15_FNF_F02DAR</td>
       <td>Training</td>
       <td>
-        NF: 6271924<br>
-        F: 6688076
+        NF: 5739929<br>
+        F: 7220071
       </td>
     </tr>
     <tr>
@@ -63,11 +63,11 @@ Bellow there's a table describing the different files involved in the contructio
         LC08_L1TP_221077_20140206_20170426_01_T1<br>
         LC08_L1TP_221078_20140206_20170426_01_T1
       </td>
-      <td>S25W051_17_FNF_F02DAR</td>
+      <td>S25W051_15_FNF_F02DAR</td>
       <td>Training</td>
       <td>
-        NF: 8493976<br>
-        F: 4466024
+        NF: 7125519<br>
+        F: 5834481
       </td>
     </tr>
     <tr>
@@ -82,11 +82,11 @@ Bellow there's a table describing the different files involved in the contructio
         LC08_L1TP_220077_20140130_20170426_01_T1<br>
         LC08_L1TP_220078_20140130_20170426_01_T1
       </td>
-      <td>S25W050_17_FNF_F02DAR</td>
+      <td>S25W050_15_FNF_F02DAR</td>
       <td>Training</td>
       <td>
-        NF: 5830415<br>
-        F: 7129585
+        NF: 5202917<br>
+        F: 7757083
       </td>
     </tr>
     <tr>
@@ -100,11 +100,11 @@ Bellow there's a table describing the different files involved in the contructio
         LC08_L1TP_222078_20140301_20170425_01_T1<br>
         LC08_L1TP_222079_20140301_20170425_01_T1
       </td>
-      <td>S26W053_17_FNF_F02DAR</td>
+      <td>S26W053_15_FNF_F02DAR</td>
       <td>Training</td>
       <td>
-        NF: 10856099<br>
-        F: 2103901
+        NF: 10081411<br>
+        F: 2878589
       </td>
     </tr>
     <tr>
@@ -119,11 +119,11 @@ Bellow there's a table describing the different files involved in the contructio
         LC08_L1TP_221078_20140206_20170426_01_T1<br>
         LC08_L1TP_221079_20140206_20170426_01_T1
       </td>
-      <td>S26W052_17_FNF_F02DAR</td>
+      <td>S26W052_15_FNF_F02DAR</td>
       <td>Training</td>
       <td>
-        NF: 4772477<br>
-        F: 8187523
+        NF: 3763615<br>
+        F: 9196385
       </td>
     </tr>
     <tr>
@@ -136,11 +136,11 @@ Bellow there's a table describing the different files involved in the contructio
         LC08_L1TP_221078_20140206_20170426_01_T1<br>
         LC08_L1TP_221079_20140206_20170426_01_T1
       </td>
-      <td>S26W051_17_FNF_F02DAR</td>
+      <td>S26W051_15_FNF_F02DAR</td>
       <td>Training</td>
       <td>
-        NF: 6068250<br>
-        F: 6891750
+        NF: 4077598<br>
+        F: 8882402
       </td>
     </tr>
     <tr>
@@ -155,11 +155,11 @@ Bellow there's a table describing the different files involved in the contructio
         LC08_L1TP_220078_20140130_20170426_01_T1<br>
         LC08_L1TP_220079_20140130_20170426_01_T1
       </td>
-      <td>S26W050_17_FNF_F02DAR</td>
+      <td>S26W050_15_FNF_F02DAR</td>
       <td>Training</td>
       <td>
-        NF: 4066061<br>
-        F: 8893939
+        NF: 2860139<br>
+        F: 10099861
       </td>
     </tr>
     <tr>
@@ -171,11 +171,11 @@ Bellow there's a table describing the different files involved in the contructio
       <td>
         LC08_L1TP_222079_20140301_20170425_01_T1
       </td>
-      <td>S27W053_17_FNF_F02DAR</td>
+      <td>S27W053_15_FNF_F02DAR</td>
       <td>Training</td>
       <td>
-        NF: 10928487<br>
-        F: 2031513
+        NF: 9604649<br>
+        F: 3355351
       </td>
     </tr>
     <tr>
@@ -188,11 +188,11 @@ Bellow there's a table describing the different files involved in the contructio
         LC08_L1TP_222079_20140301_20170425_01_T1<br>
         LC08_L1TP_221079_20140206_20170426_01_T1
       </td>
-      <td>S27W052_17_FNF_F02DAR</td>
+      <td>S27W052_15_FNF_F02DAR</td>
       <td>Training</td>
       <td>
-        NF: 9216286<br>
-        F: 3743714
+        NF: 8132216<br>
+        F: 4827784
       </td>
     </tr>
     <tr>
@@ -204,11 +204,11 @@ Bellow there's a table describing the different files involved in the contructio
       <td>
         LC08_L1TP_221079_20140206_20170426_01_T1
       </td>
-      <td>S27W051_17_FNF_F02DAR</td>
+      <td>S27W051_15_FNF_F02DAR</td>
       <td>Training</td>
       <td>
-        NF: 6724179<br>
-        F: 6235821
+        NF: 5461194<br>
+        F: 7498806
       </td>
     </tr>
     <tr>
@@ -221,11 +221,11 @@ Bellow there's a table describing the different files involved in the contructio
         LC08_L1TP_221079_20140206_20170426_01_T1<br>
         LC08_L1TP_220079_20140130_20170426_01_T1
       </td>
-      <td>S27W050_17_FNF_F02DAR</td>
+      <td>S27W050_15_FNF_F02DAR</td>
       <td>Training</td>
       <td>
-        NF: 5403650<br>
-        F: 7556350
+        NF: 3720423<br>
+        F: 9239577
       </td>
     </tr>
     <tr>
@@ -235,15 +235,15 @@ Bellow there's a table describing the different files involved in the contructio
         29º0'0"S - 50º0'0"W</td>
       <td>s29_w051_1arc_v3</td>
       <td>
-        LC08_L1TP_222080_20140301_20170425_01_T1<br>
+        LC08_L1TP_221080_20140206_20170426_01_T1<br>
         LC08_L1TP_221079_20140206_20170426_01_T1<br>
         LC08_L1TP_220080_20140130_20170426_01_T1
       </td>
-      <td>S28W051_17_FNF_F02DAR</td>
+      <td>S28W051_15_FNF_F02DAR</td>
       <td>Testing</td>
       <td>
-        NF: 8546237<br>
-        F: 4413763
+        NF: 7776871<br>
+        F: 5183129
       </td>
     </tr>
   </tbody>
