@@ -1,4 +1,7 @@
-# py-cnn-geo
+# Outdated project!!
+The project is now under the [Laboratorio de Sistemas Inteligentes](https://github.com/labsin-uncuyo). Please refer to [this link](https://github.com/labsin-uncuyo/py-cnn-geo) to access the last version.
+
+## py-cnn-geo
 CNN architecture for Forest-No Forest mask generation based on SRTM and Landsat-8 information.
 
 
